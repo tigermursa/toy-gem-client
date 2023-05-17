@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-const CreatFood = () => {
+const AddToys = () => {
   const [ok, setOk] = useState([]);
 
   const handleSubmit = (event) => {
@@ -96,4 +96,4 @@ const CreatFood = () => {
   );
 };
 
-export default CreatFood;
+export default AddToys;
