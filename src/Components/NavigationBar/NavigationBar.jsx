@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
-
-
+import { AuthContext } from "../Provider/AuthProvider";
+import { FaUserAlt } from "react-icons/fa";
 const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const { signOutUser, user } = useContext(AuthContext);
   const handleItemClick = (itemName) => {
     setActiveItem(itemName);
     setMobileMenuOpen(false);
@@ -16,17 +16,24 @@ const NavigationBar = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const signOutHandler = () => {
+    signOutUser()
+      .then((result) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <p className=" text-3xl font-bold text-white">Toy Gem</p>
+              <p className="text-2xl font-bold text-white">Toy Gem</p>
             </div>
             <div className="hidden md:flex md:items-center ml-4">
               <NavLink
-                exact
+                exact="true"
                 to="/"
                 onClick={() => handleItemClick("home")}
                 className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
@@ -72,6 +79,46 @@ const NavigationBar = () => {
                 Blogs
               </NavLink>
             </div>
+          </div>
+          <div className="flex items-center">
+            <NavLink>
+              {user ? (
+                <img
+                  className=" profile-pic"
+                  title={user.displayName}
+                  src={user.photoURL}
+                  alt=""
+                />
+              ) : (
+                <p
+                  className="text-2xl rounded-full 
+              "
+                >
+                  <FaUserAlt />
+                </p>
+              )}
+            </NavLink>
+            {/* New login nav item */}
+            <NavLink to="/login" onClick={() => handleItemClick("login")}>
+              {user ? (
+                <button
+                  onClick={signOutHandler}
+                  className={`text-gray-300 hover:text-white px-3 py-2 ms-5 rounded-md text-sm font-medium ${
+                    activeItem === "login" ? "activeNavItem" : ""
+                  }`}
+                >
+                  Log Out
+                </button>
+              ) : (
+                <button
+                  className={`text-gray-300 hover:text-white px-3 py-2 ms-5 rounded-md text-sm font-medium ${
+                    activeItem === "login" ? "activeNavItem" : ""
+                  }`}
+                >
+                  Log In
+                </button>
+              )}
+            </NavLink>
           </div>
           <div className="flex md:hidden">
             <button
@@ -100,7 +147,7 @@ const NavigationBar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <NavLink
-                exact
+                exact="true"
                 to="/"
                 onClick={() => handleItemClick("home")}
                 className={`text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
@@ -144,6 +191,16 @@ const NavigationBar = () => {
                 }`}
               >
                 Blogs
+              </NavLink>
+              {/* New login nav item */}
+              <NavLink
+                to="/login"
+                onClick={() => handleItemClick("login")}
+                className={`text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
+                  activeItem === "login" ? "activeNavItem" : ""
+                }`}
+              >
+                Login
               </NavLink>
             </div>
           </div>
