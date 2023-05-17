@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavigationBar.css";
 
+
 const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,7 +21,10 @@ const NavigationBar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="hidden md:flex md:items-center">
+            <div className="flex-shrink-0">
+              <p className=" text-3xl font-bold text-white">Toy Gem</p>
+            </div>
+            <div className="hidden md:flex md:items-center ml-4">
               <NavLink
                 exact
                 to="/"
