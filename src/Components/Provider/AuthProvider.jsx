@@ -9,7 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import app from "../Firebase/firebaseConfig";
-
+import { doc, setDoc } from "firebase/firestore";
 export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types

@@ -12,6 +12,7 @@ import Blogs from "./Components/Blogs/Blogs.jsx";
 import AuthProvider from "./Components/Provider/AuthProvider.jsx";
 import SignUp from "./Components/SignUp/SignUp.jsx";
 import LogIn from "./Components/LogIn/LogIn.jsx";
+import ForOhFor from "./Components/ForOhfor/ForOhFor.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     element: <Layout></Layout>,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home></Home>,
       },
       {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <ForOhFor></ForOhFor>,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

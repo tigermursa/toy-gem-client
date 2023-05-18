@@ -160,7 +160,7 @@ const SignUp = () => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
-              <div className="pass">
+              <div className="pass text-white">
                 <p>Forgot Password?</p>
               </div>
               <button className="field">

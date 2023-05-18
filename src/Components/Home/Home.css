@@ -1,53 +1,30 @@
-.user-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .user-card {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 390px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    border: 3px solid;
-    /* margin: auto; */
-    padding-bottom: 10px;
-  }
-  .card-box {
+.slider-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-image {
+  width: 100%;
+  height: 450px;
+  object-fit: initial;
+}
+
+.mySlider {
+  width: 100%;
+}
+
+.photo-gallery-container {
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  .slider-image {
     width: 100%;
-    margin: auto;
+    height: 150px;
+    object-fit: initial;
   }
-  .food-img {
-    width: 350px;
-    height: 300px;
-    margin: auto;
-    object-fit: cover;
-  }
-  .user-card-buttons {
-    margin-top: auto;
+  .mySlider {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
-  
-  .user-card-update {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .user-card-delete {
-    color: white;
-    border: none;
-    padding: 0px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 10px;
-  }
-  
+}

@@ -7,7 +7,7 @@
   user-select: none;
 }
 .bg-img {
-  background: url("/forlogin.jpg");
+  background: url("/public/formbg.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -92,8 +92,7 @@
   text-decoration: underline;
 }
 .field input[type="submit"] {
-  background: #e42c08;
-  border: 1px solid #e60d0d;
+  background: #101539;
   color: white;
   font-size: 18px;
   letter-spacing: 1px;
@@ -102,8 +101,8 @@
   font-family: "Montserrat", sans-serif;
 }
 .field input[type="submit"]:hover {
-  background: #d33414;
-  border: 2px solid #6c757f;
+  background: #111115;
+ 
 }
 .login {
   color: white;
@@ -128,20 +127,14 @@
 }
 .google {
   margin-left: 0;
-  background: #0285e9;
+  background: #e90202;
   border: 1px solid #3e61a8;
 }
-.github {
-  background: #151414;
-  border: 1px solid #151414;
-}
+
 .google:hover {
-  background: #3e61a8;
+  background: #bf2c1e;
 }
-.github:hover {
-  background: #383133;
-  border: 1px solid #383133;
-}
+
 .links i {
   font-size: 17px;
 }

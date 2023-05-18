@@ -1,67 +1,84 @@
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
+import PhotoGallery from "./HomeSections/PhotoGallery";
 
-const Home = () => {
-  const loadedUsers = useLoaderData();
-  const [users, setUsers] = useState(loadedUsers);
-  const [favorites, setFavorites] = useState([]);
-  const [addedFavorites, setAddedFavorites] = useState([]);
-
-  const handleAddToFavorites = (user) => {
-    // Logic to add the user to favorites
-    setFavorites([...favorites, user._id]);
-    setAddedFavorites([...addedFavorites, user._id]);
-
-    // Store the favorite user in local storage
-    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    localStorage.setItem(
-      "favorites",
-      JSON.stringify([...storedFavorites, user])
-    );
-
-    // Show toast message
-    toast.success("Your favorite food added to the list");
-  };
-
-  const isFavorite = (userId) => {
-    return favorites.includes(userId);
-  };
-
-  const isAddedFavorite = (userId) => {
-    return addedFavorites.includes(userId);
+const HomeSlider = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="card-box">
-      <div>
-        <div>
-          <div className="user-cards mt-5">
-            {users.map((user) => (
-              <div className="user-card" key={user._id}>
-                <img className="food-img" src={user.img} alt="" />
-                <h2 className="text-3xl font-bold mb-5 mt-5">{user.name}</h2>
-                <p className="text-2xl mb-5">{user.country}</p>
-                <button
-                  className={`bg-red-500 text-white py-2 px-4 rounded mt-6 font-semibold ${
-                    isAddedFavorite(user._id) ? "bg-gray-600" : ""
-                  }`}
-                  onClick={() => handleAddToFavorites(user)}
-                  disabled={isFavorite(user._id)}
-                >
-                  {isAddedFavorite(user._id)
-                    ? "Added to Favorites"
-                    : "Add to Favorite"}
-                </button>
-              </div>
-            ))}
-          </div>
+    <div className="slider-container">
+      {" "}
+      {/* Added a container with the "slider-container" class */}
+      <Slider {...settings}>
+        <div className="slider-slide">
+          <img
+            src="/public/sliderphoto1.jpg"
+            alt="Slide 1"
+            className="slider-image"
+          />
+        </div>
+        <div className="slider-slide">
+          <img
+            src="/public/slider2r.jpg"
+            alt="Slide 2"
+            className="slider-image"
+          />
+        </div>
+        <div className="slider-slide">
+          <img
+            src="/public/slider3.jpg"
+            alt="Slide 3"
+            className="slider-image"
+          />
+        </div>
+        {/* Add more slide content as needed */}
+      </Slider>
+    </div>
+  );
+};
+
+const Home = () => {
+  return (
+    <>
+      <div className="slider-container">
+        <div className="mySlider mb-10">
+          <HomeSlider />
         </div>
       </div>
-      <ToastContainer /> {/* Add this component at the end of your component */}
-    </div>
+      <div>
+        <h1 className="text-2xl md:text-5xl font-bold font-serif p-1">BEST MARVEL ACTION FIGURE COLLECTIONS</h1>
+      </div>
+      <div className="photo-gallery-container mb-5">
+        <PhotoGallery></PhotoGallery>
+      </div>
+    </>
   );
 };
 

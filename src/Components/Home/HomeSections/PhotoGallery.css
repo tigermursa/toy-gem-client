@@ -1,0 +1,18 @@
+.gallery-img {
+  width: 300px;
+  height: 300px;
+  object-fit: inherit;
+  margin: 2px;
+  border: 1px solid rgb(37, 37, 43);
+}
+
+
+@media (max-width: 480px) {
+    .gallery-img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        margin: 2px;
+      }
+      
+  }
