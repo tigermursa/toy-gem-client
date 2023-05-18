@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+
 const AddToys = () => {
   const [ok, setOk] = useState([]);
 
@@ -7,12 +8,30 @@ const AddToys = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const country = form.country.value;
     const img = form.img.value;
-    const user = { name, country, img };
-    console.log(user);
+    const sellerName = form.sellerName.value;
+    const sellerEmail = form.sellerEmail.value;
+    const subCategory = form.subCategory.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const quantity = form.quantity.value;
+    const description = form.description.value;
+
+    const user = {
+      name,
+      img,
+      sellerName,
+      sellerEmail,
+      subCategory,
+      price,
+      rating,
+      quantity,
+      description,
+    };
+
     form.reset();
-    fetch("http://localhost:3000/users", {
+
+    fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,53 +55,155 @@ const AddToys = () => {
 
   return (
     <div className="p-4">
+      <h1 className="font-serif font-semibold text-3xl mt-5 mb-5">Add a Toy here</h1>
       <form onSubmit={handleSubmit}>
-        {/* Image upload */}
-        <div className="mb-4">
-          <label
-            htmlFor="foodName"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            Image
-          </label>
-          <input
-            type="text"
-            id="foodName"
-            className="border border-gray-400 p-2 w-full"
-            name="img"
-            placeholder="photo url link address here "
-          />
+        <div className="grid grid-cols-2 gap-4">
+          {/* Image upload */}
+          <div className="mb-4">
+            <label htmlFor="img" className="block text-gray-700 font-bold mb-2">
+              Image
+            </label>
+            <input
+              type="text"
+              id="img"
+              className="border border-gray-400 p-2 w-full"
+              name="img"
+              placeholder="Photo URL link address here"
+            />
+          </div>
+          {/* Food name */}
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Toy Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="border border-gray-400 p-2 w-full"
+              name="name"
+              placeholder="Your food name"
+            />
+          </div>
         </div>
-        {/* Food name */}
-        <div className="mb-4">
-          <label
-            htmlFor="foodName"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            Food Name
-          </label>
-          <input
-            type="text"
-            id="foodName"
-            className="border border-gray-400 p-2 w-full"
-            name="name"
-            placeholder="Your food name "
-          />
+        <div className="grid grid-cols-2 gap-4">
+          {/* Seller name */}
+          <div className="mb-4">
+            <label
+              htmlFor="sellerName"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Seller Name
+            </label>
+            <input
+              type="text"
+              id="sellerName"
+              className="border border-gray-400 p-2 w-full"
+              name="sellerName"
+              placeholder="Seller's name"
+            />
+          </div>
+          {/* Seller email */}
+          <div className="mb-4">
+            <label
+              htmlFor="sellerEmail"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Seller Email
+            </label>
+            <input
+              type="email"
+              id="sellerEmail"
+              className="border border-gray-400 p-2 w-full"
+              name="sellerEmail"
+              placeholder="Seller's email"
+            />
+          </div>
         </div>
-        {/* Country Food */}
+        <div className="grid grid-cols-2 gap-4">
+          {/* Sub-category */}
+          <div className="mb-4">
+            <label
+              htmlFor="subCategory"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Sub-category
+            </label>
+            <input
+              type="text"
+              id="subCategory"
+              className="border border-gray-400 p-2 w-full"
+              name="subCategory"
+              placeholder="Sub-category"
+            />
+          </div>
+          {/* Price */}
+          <div className="mb-4">
+            <label
+              htmlFor="price"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Price
+            </label>
+            <input
+              type="number"
+              id="price"
+              className="border border-gray-400 p-2 w-full"
+              name="price"
+              placeholder="Price"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          {" "}
+          {/* Rating */}
+          <div className="mb-4">
+            <label
+              htmlFor="rating"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Rating
+            </label>
+            <input
+              type="number"
+              id="rating"
+              className="border border-gray-400 p-2 w-full"
+              name="rating"
+              placeholder="Rating"
+            />
+          </div>
+          {/* Available quantity */}
+          <div className="mb-4">
+            <label
+              htmlFor="quantity"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Available Quantity
+            </label>
+            <input
+              type="number"
+              id="quantity"
+              className="border border-gray-400 p-2 w-full"
+              name="quantity"
+              placeholder="Available Quantity"
+            />
+          </div>
+        </div>
+        {/* Detail description */}
         <div className="mb-4">
           <label
-            htmlFor="country"
+            htmlFor="description"
             className="block text-gray-700 font-bold mb-2"
           >
-            Country
+            Detail Description
           </label>
-          <input
-            type="text"
-            id="country"
+          <textarea
+            id="description"
             className="border border-gray-400 p-2 w-full"
-            name="country"
-            placeholder="food country  "
+            name="description"
+            placeholder="Detail Description"
           />
         </div>
         <button

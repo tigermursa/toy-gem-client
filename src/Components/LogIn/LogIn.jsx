@@ -88,7 +88,7 @@ const LogIn = () => {
               </span>
             </div>
             <div className="pass">
-              <p>Forgot Password?</p>
+              <p className="text-white">Forgot Password?</p>
             </div>
             <div className="field">
               <input type="submit" value="LOGIN" />
