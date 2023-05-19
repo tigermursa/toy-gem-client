@@ -1,8 +1,35 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import CreatableSelect from "react-select/creatable";
+
+const options = [
+  { value: "Avengers", label: "Avengers" },
+  { value: "Transformers", label: "Transformers" },
+  { value: "Justice League", label: "Justice League" },
+];
+const options2 = [
+  { value: "1", label: "1" },
+  { value: "1.5", label: "1.5" },
+  { value: "2", label: "2" },
+  { value: "2.5", label: "2.5" },
+  { value: "3", label: "3" },
+  { value: "3.5", label: "3.5" },
+  { value: "4", label: "4" },
+  { value: "4.5", label: "4.5" },
+  { value: "5", label: "5" },
+];
 
 const AddToys = () => {
   const [ok, setOk] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const handleSelectChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+  };
+
+  const [selectedOption2, setSelectedOption2] = useState(null);
+  const handleSelectChange2 = (selectedOption2) => {
+    setSelectedOption2(selectedOption2);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +43,6 @@ const AddToys = () => {
     const rating = form.rating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-
     const user = {
       name,
       img,
@@ -24,13 +50,15 @@ const AddToys = () => {
       sellerEmail,
       subCategory,
       price,
-      rating,
+      rating: selectedOption2?.value, // Add selected rating option value to the user object
       quantity,
       description,
+      selectedOption: selectedOption?.value, // Add selected sub-category option value to the user object
     };
 
     form.reset();
-
+    setSelectedOption(null);
+    setSelectedOption2(null);
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -60,7 +88,6 @@ const AddToys = () => {
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
-          {/* Image upload */}
           <div className="mb-4">
             <label htmlFor="img" className="block text-gray-700 font-bold mb-2">
               Image
@@ -74,7 +101,6 @@ const AddToys = () => {
               required
             />
           </div>
-          {/* Food name */}
           <div className="mb-4">
             <label
               htmlFor="name"
@@ -93,7 +119,6 @@ const AddToys = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {/* Seller name */}
           <div className="mb-4">
             <label
               htmlFor="sellerName"
@@ -110,7 +135,6 @@ const AddToys = () => {
               required
             />
           </div>
-          {/* Seller email */}
           <div className="mb-4">
             <label
               htmlFor="sellerEmail"
@@ -129,7 +153,6 @@ const AddToys = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {/* Sub-category */}
           <div className="mb-4">
             <label
               htmlFor="subCategory"
@@ -137,16 +160,17 @@ const AddToys = () => {
             >
               Sub-category
             </label>
-            <input
-              type="text"
+            <CreatableSelect
+              options={options}
+              value={selectedOption}
+              onChange={handleSelectChange}
               id="subCategory"
               className="border border-gray-400 p-2 w-full"
               name="subCategory"
-              placeholder="Sub-category"
+              placeholder="Select Sub-category"
               required
             />
           </div>
-          {/* Price */}
           <div className="mb-4">
             <label
               htmlFor="price"
@@ -165,8 +189,6 @@ const AddToys = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {" "}
-          {/* Rating */}
           <div className="mb-4">
             <label
               htmlFor="rating"
@@ -174,16 +196,17 @@ const AddToys = () => {
             >
               Rating
             </label>
-            <input
-              type="number"
+            <CreatableSelect
+              options={options2}
+              value={selectedOption2}
+              onChange={handleSelectChange2}
               id="rating"
               className="border border-gray-400 p-2 w-full"
               name="rating"
-              placeholder="Rating"
+              placeholder="Select Rating"
               required
             />
           </div>
-          {/* Available quantity */}
           <div className="mb-4">
             <label
               htmlFor="quantity"
@@ -201,7 +224,6 @@ const AddToys = () => {
             />
           </div>
         </div>
-        {/* Detail description */}
         <div className="mb-4">
           <label
             htmlFor="description"
