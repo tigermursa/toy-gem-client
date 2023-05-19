@@ -3,6 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import "./Private.css";
 import Spinner from "./Spiner";
+import Swal from "sweetalert2";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   console.log(user);
@@ -18,7 +19,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
-    alert("User not authenticated. Redirecting to login page.");
+    Swal.fire("You have to log in first to view details");
     return <Navigate to="/login" state={{ from: location }} />;
   }
 };

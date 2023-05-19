@@ -2,17 +2,41 @@ import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./AllToys.css";
 import Swal from "sweetalert2";
-import { FaRegTrashAlt } from "react-icons/fa";
 
 const AllToys = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
   const [showAll, setShowAll] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const DEFAULT_ITEMS_COUNT = 20;
 
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <div className="container mx-auto">
+      <div className="mb-4 flex items-center justify-center mt-10">
+        <input
+          type="text"
+          placeholder="Search by toy name"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-60"
+        />
+        <button
+          className="bg-blue-950 hover:bg-blue-600 text-white py-3 px-6 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          onClick={() => setSearchTerm("")}
+        >
+          Clear
+        </button>
+      </div>
+
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-300 mt-5">
           <thead>
@@ -41,7 +65,7 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
+            {filteredUsers.map((user, index) => {
               if (!showAll && index >= DEFAULT_ITEMS_COUNT) {
                 return null; // Skip rendering if not showing all and index is greater than or equal to the default items count
               }
@@ -80,15 +104,16 @@ const AllToys = () => {
           </tbody>
         </table>
       </div>
-      <div className="text-center mb-5">
+      <div className="text-center mb-5 ">
         {!showAll && (
           <button
-            className="bg-blue-950 text-white py-2 px-4 rounded mt-6"
+            className="bg-blue-950 text-white py-2 px-4 rounded mt-6 me-6"
             onClick={() => setShowAll(true)}
           >
             See All
           </button>
         )}
+
         <Link to="/addtoys">
           <button className="bg-blue-950 text-white py-2 px-4 rounded mt-6">
             Add a Toy

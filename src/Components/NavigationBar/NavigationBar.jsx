@@ -59,24 +59,27 @@ const NavigationBar = () => {
               >
                 All Toys
               </NavLink>
-              <NavLink
-                to="/mytoys"
-                onClick={() => handleItemClick("mytoys")}
-                className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                  activeItem === "mytoys" ? "activeNavItem" : ""
-                }`}
-              >
-                My Toys
-              </NavLink>
-              <NavLink
-                to="/addtoys"
-                onClick={() => handleItemClick("addtoys")}
-                className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                  activeItem === "addtoys" ? "activeNavItem" : ""
-                }`}
-              >
-                Add  A Toys
-              </NavLink>
+              {user?<div>
+                <NavLink
+                  to="/mytoys"
+                  onClick={() => handleItemClick("mytoys")}
+                  className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
+                    activeItem === "mytoys" ? "activeNavItem" : ""
+                  }`}
+                >
+                  My Toys
+                </NavLink>
+                <NavLink
+                  to="/addtoys"
+                  onClick={() => handleItemClick("addtoys")}
+                  className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
+                    activeItem === "addtoys" ? "activeNavItem" : ""
+                  }`}
+                >
+                  Add A Toys
+                </NavLink>
+              </div> :<div></div>}
+
               <NavLink
                 to="/blogs"
                 onClick={() => handleItemClick("blogs")}

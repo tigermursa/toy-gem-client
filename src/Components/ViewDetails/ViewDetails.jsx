@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { FaPenAlt, FaRegTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./ViewDetails.css";
+import Spinner from "../Private/Spiner";
 const ViewDetails = () => {
   const { id } = useParams(); // Access the ID from the route parameters
   const [user, setUser] = useState(null); // Store the selected user data
@@ -56,7 +57,12 @@ const ViewDetails = () => {
 
   if (!user) {
     return (
-      <div className="mt-80 mb-80 text-4xl text-yellow-400">Loading......</div>
+      <div className="flex justify-center items-center mt-96 mb-96 font-semibold text-4xl text-blue-950">
+        Loading{" "}
+        <div className="ms-5">
+          <Spinner></Spinner>
+        </div>
+      </div>
     );
   }
 

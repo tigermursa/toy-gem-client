@@ -15,6 +15,7 @@ import LogIn from "./Components/LogIn/LogIn.jsx";
 import ForOhFor from "./Components/ForOhfor/ForOhFor.jsx";
 import ViewDetails from "./Components/ViewDetails/ViewDetails.jsx";
 import Update from "./Components/Update/Update.jsx";
+import PrivateRoute from "./Components/Private/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>{" "}
+          </PrivateRoute>
+        ),
       },
     ],
   },

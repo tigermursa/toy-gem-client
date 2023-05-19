@@ -29,7 +29,7 @@ const LogIn = () => {
         const loggedInUser = result.user;
         form.reset();
         console.log(loggedInUser);
-        navigate(from) || "/home"; // replace '/home' with the URL of the page you want to navigate to
+        navigate(from) || "/"; // replace '/home' with the URL of the page you want to navigate to
       })
       .catch((error) => {
         setError("Your email or password not valid");
