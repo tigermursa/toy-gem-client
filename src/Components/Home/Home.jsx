@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 import PhotoGallery from "./HomeSections/PhotoGallery";
-
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import { Link, useLoaderData } from "react-router-dom";
+import { FaRegStar, FaShoppingCart, FaRegHeart } from "react-icons/fa";
 const HomeSlider = () => {
   const settings = {
     dots: true,
@@ -34,8 +37,6 @@ const HomeSlider = () => {
 
   return (
     <div className="slider-container">
-      {" "}
-      {/* Added a container with the "slider-container" class */}
       <Slider {...settings}>
         <div className="slider-slide">
           <img
@@ -58,13 +59,19 @@ const HomeSlider = () => {
             className="slider-image"
           />
         </div>
-        {/* Add more slide content as needed */}
       </Slider>
     </div>
   );
 };
 
 const Home = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabSelect = (index) => {
+    setActiveTab(index);
+  };
+  const toys = useLoaderData();
+  console.log(toys);
   return (
     <>
       <div className="slider-container">
@@ -72,12 +79,139 @@ const Home = () => {
           <HomeSlider />
         </div>
       </div>
-      <div>
-        <h1 className="text-2xl md:text-5xl font-bold font-serif p-1">BEST MARVEL ACTION FIGURE COLLECTIONS</h1>
-      </div>
       <div className="photo-gallery-container mb-5">
-        <PhotoGallery></PhotoGallery>
+        <PhotoGallery />
       </div>
+      <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
+        <TabList>
+          <Tab>Avengers</Tab>
+          <Tab>Transformers</Tab>
+          <Tab>Justice League</Tab>
+        </TabList>
+        <TabPanel>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {toys
+              .filter((toy) => toy.subCategory === "Avengers")
+              .map((toy) => (
+                <div key={toy._id} className="toy-card flex flex-col h-full">
+                  <div className="product-card flex flex-col justify-between h-full">
+                    <div className="badge">Hot</div>
+                    <div className="product-tumb">
+                      <img src={toy.img} alt="" />
+                    </div>
+                    <div className="product-details">
+                      <span className="product-catagory">
+                        Avengers Action Figure
+                      </span>
+                      <h4>
+                        <a>{toy.name}</a>
+                      </h4>
+                      <p className="flex-grow">
+                        {toy.description.split(" ").slice(0, 17).join(" ")}
+                      </p>
+                      <div className="product-bottom-details">
+                        <div className="product-price">
+                          <small>420</small>${toy.price}
+                        </div>
+                        <div className="product-price flex items-center justify-center">
+                          <FaRegStar className="text-xl p-1" />
+                          {toy.rating}
+                        </div>
+                        <div className="product-links  flex mt-10 ">
+                          <a href="">
+                            <FaShoppingCart className="text-4xl" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {toys
+              .filter((toy) => toy.subCategory === "Transformer")
+              .map((toy) => (
+                <div key={toy._id} className="toy-card flex flex-col h-full">
+                  <div className="product-card flex flex-col justify-between h-full">
+                    <div className="badge">Hot</div>
+                    <div className="product-tumb">
+                      <img src={toy.img} alt="" />
+                    </div>
+                    <div className="product-details">
+                      <span className="product-catagory">
+                        Avengers Action Figure
+                      </span>
+                      <h4>
+                        <a  className="font-bold">{toy.name}</a>
+                      </h4>
+                      <p className="flex-grow">
+                        {toy.description.split(" ").slice(0, 17).join(" ")}
+                      </p>
+                      <div className="product-bottom-details">
+                        <div className="product-price">
+                          <small>310</small>${toy.price}
+                        </div>
+                        <div className="product-price flex items-center justify-center">
+                          <FaRegStar className="text-xl p-1" />
+                          {toy.rating}
+                        </div>
+                        <div className="product-links  flex mt-10 ">
+                          <a href="">
+                            <FaShoppingCart className="text-4xl" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {toys
+              .filter((toy) => toy.subCategory === "Justice League")
+              .map((toy) => (
+                <div key={toy._id} className="toy-card flex flex-col h-full">
+                  <div className="product-card flex flex-col justify-between h-full">
+                    <div className="badge">Hot</div>
+                    <div className="product-tumb">
+                      <img src={toy.img} alt="" />
+                    </div>
+                    <div className="product-details">
+                      <span className="product-catagory">
+                        Avengers Action Figure
+                      </span>
+                      <h4>
+                        <a>{toy.name}</a>
+                      </h4>
+                      <p className="flex-grow">
+                        {toy.description.split(" ").slice(0, 17).join(" ")}
+                      </p>
+                      <div className="product-bottom-details">
+                        <div className="product-price">
+                          <small>290</small>${toy.price}
+                        </div>
+                        <div className="product-price flex items-center justify-center">
+                          <FaRegStar className="text-xl p-1" />
+                          {toy.rating}
+                        </div>
+                        <div className="product-links  flex mt-10 ">
+                          <a href="">
+                            <FaShoppingCart className="text-4xl" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </TabPanel>
+      </Tabs>
     </>
   );
 };

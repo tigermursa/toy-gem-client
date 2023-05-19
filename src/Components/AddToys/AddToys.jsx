@@ -55,7 +55,9 @@ const AddToys = () => {
 
   return (
     <div className="p-4">
-      <h1 className="font-serif font-semibold text-3xl mt-5 mb-5">Add a Toy here</h1>
+      <h1 className="font-serif font-semibold text-3xl mt-5 mb-5">
+        Add a Toy here
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
           {/* Image upload */}
@@ -69,6 +71,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="img"
               placeholder="Photo URL link address here"
+              required
             />
           </div>
           {/* Food name */}
@@ -85,6 +88,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="name"
               placeholder="Your food name"
+              required
             />
           </div>
         </div>
@@ -103,6 +107,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="sellerName"
               placeholder="Seller's name"
+              required
             />
           </div>
           {/* Seller email */}
@@ -119,6 +124,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="sellerEmail"
               placeholder="Seller's email"
+              required
             />
           </div>
         </div>
@@ -137,6 +143,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="subCategory"
               placeholder="Sub-category"
+              required
             />
           </div>
           {/* Price */}
@@ -153,6 +160,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="price"
               placeholder="Price"
+              required
             />
           </div>
         </div>
@@ -172,6 +180,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="rating"
               placeholder="Rating"
+              required
             />
           </div>
           {/* Available quantity */}
@@ -188,6 +197,7 @@ const AddToys = () => {
               className="border border-gray-400 p-2 w-full"
               name="quantity"
               placeholder="Available Quantity"
+              required
             />
           </div>
         </div>
@@ -204,6 +214,7 @@ const AddToys = () => {
             className="border border-gray-400 p-2 w-full"
             name="description"
             placeholder="Detail Description"
+            required
           />
         </div>
         <button

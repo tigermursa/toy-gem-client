@@ -1,5 +1,5 @@
 import React from "react";
-import "./PhotoGallery.css"
+import "./PhotoGallery.css";
 const PhotoGallery = () => {
   const images = [
     {
@@ -24,7 +24,7 @@ const PhotoGallery = () => {
     },
     {
       id: 5,
-      src: "https://cdn.pixabay.com/photo/2022/06/09/06/02/dr-strange-7251770_960_720.jpg",
+      src: "https://c4.wallpaperflare.com/wallpaper/6/249/102/optimus-prime-transformers-wallpaper-preview.jpg",
       alt: "Image 5",
     },
 
@@ -33,20 +33,20 @@ const PhotoGallery = () => {
       src: "https://alitools.io/en/showcase/image?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FH2f0b6d1efdef4c0692ad9e596e604bc5p.jpg_480x480.jpg",
       alt: "Image 2",
     },
-
     {
       id: 7,
-      src: "https://lzd-img-global.slatic.net/g/p/47b53ccd54307cffc2cff8d3c045a055.jpg_720x720q80.jpg_.webp",
-      alt: "Image 3",
-    },
-    {
-      id: 8,
-      src: "https://www.picturethemagic.com/wp-content/uploads/2019/12/marvel-toys-featured-image.jpg",
+      src: "https://smallvillecomics.co.za/wp-content/uploads/2018/04/rebirth-7-pack.png",
       alt: "Image 5",
     },
     {
+      id: 8,
+      src: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2017%2F07%2Fc2984as00_hasbrou_12-2000.jpg",
+      alt: "Image 3",
+    },
+
+    {
       id: 9,
-      src: "https://cdn.shopify.com/s/files/1/0560/1070/2957/products/Marvel-Avengers-Ultimate-Protectors--Action-Figure.jpg?v=1671186023",
+      src: "https://media.entertainmentearth.com/assets/images/4caa1d70be17463c844421edc20b2c5flg.jpg",
       alt: "Image 5",
     },
   ];

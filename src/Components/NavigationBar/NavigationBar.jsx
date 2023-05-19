@@ -88,9 +88,9 @@ const NavigationBar = () => {
               </NavLink>
               <NavLink
                 to="/blo"
-                onClick={() => handleItemClick("blogs")}
+                onClick={() => handleItemClick("for")}
                 className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
-                  activeItem === "blogs" ? "activeNavItem" : ""
+                  activeItem === "for" ? "activeNavItem" : ""
                 }`}
               >
                 404
