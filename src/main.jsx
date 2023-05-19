@@ -13,6 +13,8 @@ import AuthProvider from "./Components/Provider/AuthProvider.jsx";
 import SignUp from "./Components/SignUp/SignUp.jsx";
 import LogIn from "./Components/LogIn/LogIn.jsx";
 import ForOhFor from "./Components/ForOhfor/ForOhFor.jsx";
+import ViewDetails from "./Components/ViewDetails/ViewDetails.jsx";
+import Update from "./Components/Update/Update.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +32,16 @@ const router = createBrowserRouter([
         loader: () => fetch(`http://localhost:5000/users`),
       },
       {
-        path: "/mytoys",
+        path: "/mytoys/:id",
         element: <MyToys></MyToys>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/users/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/users/${params.id}`),
       },
       {
         path: "/addtoys",
@@ -48,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/details/:id",
+        element: <ViewDetails></ViewDetails>,
       },
     ],
   },

@@ -75,7 +75,7 @@ const NavigationBar = () => {
                   activeItem === "addtoys" ? "activeNavItem" : ""
                 }`}
               >
-                Add Toys
+                Add  A Toys
               </NavLink>
               <NavLink
                 to="/blogs"

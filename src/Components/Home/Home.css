@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 .slider-slide {
   display: flex;
   justify-content: center;
@@ -18,7 +19,7 @@
   padding: 20px;
 }
 /* The holy card ===================================================================================================================================*/
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

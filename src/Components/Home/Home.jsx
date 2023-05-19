@@ -7,7 +7,7 @@ import PhotoGallery from "./HomeSections/PhotoGallery";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link, useLoaderData } from "react-router-dom";
-import { FaRegStar, FaShoppingCart, FaRegHeart } from "react-icons/fa";
+import { FaRegStar, FaShoppingCart } from "react-icons/fa";
 const HomeSlider = () => {
   const settings = {
     dots: true,
@@ -40,21 +40,21 @@ const HomeSlider = () => {
       <Slider {...settings}>
         <div className="slider-slide">
           <img
-            src="/public/sliderphoto1.jpg"
+            src="/sliderphoto1.jpg"
             alt="Slide 1"
             className="slider-image"
           />
         </div>
         <div className="slider-slide">
           <img
-            src="/public/slider2r.jpg"
+            src="/slider2r.jpg"
             alt="Slide 2"
             className="slider-image"
           />
         </div>
         <div className="slider-slide">
           <img
-            src="/public/slider3.jpg"
+            src="/slider3.jpg"
             alt="Slide 3"
             className="slider-image"
           />
@@ -123,6 +123,13 @@ const Home = () => {
                           </a>
                         </div>
                       </div>
+                      <div className="flex justify-center">
+                        <Link to={`/details/${toy._id}`}>
+                          <button className="text-white font-bold bg-blue-950 p-2 md:p-3 hover:bg-blue-800 rounded-full">
+                            View Details
+                          </button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -145,7 +152,7 @@ const Home = () => {
                         Avengers Action Figure
                       </span>
                       <h4>
-                        <a  className="font-bold">{toy.name}</a>
+                        <a className="font-bold">{toy.name}</a>
                       </h4>
                       <p className="flex-grow">
                         {toy.description.split(" ").slice(0, 17).join(" ")}
@@ -164,6 +171,13 @@ const Home = () => {
                           </a>
                         </div>
                       </div>
+                    </div>
+                    <div className="flex justify-center mb-9">
+                      <Link to={`/details/${toy._id}`}>
+                        <button className="text-white font-bold bg-blue-950 p-2 md:p-3 hover:bg-blue-800 rounded-full">
+                          View Details
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -205,6 +219,13 @@ const Home = () => {
                           </a>
                         </div>
                       </div>
+                    </div>
+                    <div className="flex justify-center mb-9">
+                      <Link to={`/details/${toy._id}`}>
+                        <button className="text-white font-bold bg-blue-950 p-2 md:p-3 hover:bg-blue-800 rounded-full">
+                          View Details
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

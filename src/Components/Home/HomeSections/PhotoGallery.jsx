@@ -30,7 +30,7 @@ const PhotoGallery = () => {
 
     {
       id: 6,
-      src: "https://alitools.io/en/showcase/image?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FH2f0b6d1efdef4c0692ad9e596e604bc5p.jpg_480x480.jpg",
+      src: "https://i5.walmartimages.ca/images/Enlarge/045/461/6000205045461.jpg",
       alt: "Image 2",
     },
     {

@@ -4,7 +4,7 @@ import CreatableSelect from "react-select/creatable";
 
 const options = [
   { value: "Avengers", label: "Avengers" },
-  { value: "Transformers", label: "Transformers" },
+  { value: "Transformer", label: "Transformer" },
   { value: "Justice League", label: "Justice League" },
 ];
 const options2 = [
@@ -38,9 +38,9 @@ const AddToys = () => {
     const img = form.img.value;
     const sellerName = form.sellerName.value;
     const sellerEmail = form.sellerEmail.value;
-    const subCategory = form.subCategory.value;
+    const subCategory = selectedOption.value;
     const price = form.price.value;
-    const rating = form.rating.value;
+    const rating = selectedOption2.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
     const user = {
@@ -50,10 +50,9 @@ const AddToys = () => {
       sellerEmail,
       subCategory,
       price,
-      rating: selectedOption2?.value, // Add selected rating option value to the user object
+      rating,
       quantity,
       description,
-      selectedOption: selectedOption?.value, // Add selected sub-category option value to the user object
     };
 
     form.reset();
