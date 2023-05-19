@@ -4,11 +4,12 @@ import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../Provider/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const LogIn = () => {
   // error handling  code here
   const [error, setError] = useState();
-
+  useTitle("Login");
   // the super Navigation code here ...................
   const navigate = useNavigate();
   const location = useLocation();

@@ -1,6 +1,8 @@
 import React from "react";
 import "./Blog.css";
+import useTitle from "../../Hooks/useTitle";
 const Blogs = () => {
+  useTitle("Blogs")
   return (
     <div className="bg-gray-100 p-8 bg-blog ">
       <h1 className="text-3xl font-bold mb-4">
@@ -57,7 +59,7 @@ const Blogs = () => {
       </p>
 
       <h1 className="text-3xl font-bold mb-4">
-        Question 4 :What is MongoDB aggregate and how does it work ? hook?
+        Question 4 :What is MongoDB aggregate and how does it work ?
       </h1>
       <p className="text-lg mb-8">
         Answer : MongoDB Aggregate: MongoDB Aggregate is like a super tool for

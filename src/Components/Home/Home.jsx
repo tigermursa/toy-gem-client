@@ -8,6 +8,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaRegStar, FaShoppingCart } from "react-icons/fa";
+import useTitle from "../../Hooks/useTitle";
 const HomeSlider = () => {
   const settings = {
     dots: true,
@@ -66,7 +67,7 @@ const HomeSlider = () => {
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState(0);
-
+  useTitle("Home")
   const handleTabSelect = (index) => {
     setActiveTab(index);
   };

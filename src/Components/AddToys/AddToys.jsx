@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import CreatableSelect from "react-select/creatable";
+import useTitle from "../../Hooks/useTitle";
 
 const options = [
   { value: "Avengers", label: "Avengers" },
@@ -25,7 +26,7 @@ const AddToys = () => {
   const handleSelectChange = (selectedOption) => {
     setSelectedOption(selectedOption);
   };
-
+  useTitle("AddToy")
   const [selectedOption2, setSelectedOption2] = useState(null);
   const handleSelectChange2 = (selectedOption2) => {
     setSelectedOption2(selectedOption2);

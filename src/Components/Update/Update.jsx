@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 
 import { useLoaderData } from "react-router-dom";
 import CreatableSelect from "react-select/creatable";
+import useTitle from "../../Hooks/useTitle";
 
 const options = [
   { value: "Avengers", label: "Avengers" },
@@ -62,7 +63,7 @@ const Update = () => {
         }
       });
   };
-
+  useTitle("Update")
   return (
     <div className="p-4">
       <h1 className="font-serif font-semibold text-3xl mt-5 mb-5">

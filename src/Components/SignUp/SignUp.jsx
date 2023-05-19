@@ -6,6 +6,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { storage } from "/src/Components/Firebase/firebaseConfig.js";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Spinner from "../Private/Spiner";
+import useTitle from "../../Hooks/useTitle";
 
 const SignUp = () => {
   // REDIRECT CODE IS HERE........................................................
@@ -13,7 +14,7 @@ const SignUp = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   // ................................................................................
-
+  useTitle("Signup");
   // CONTEXT API HERE..............................................................
   const { createUser, signInGoogle } = useContext(AuthContext);
   // ..............................................................................

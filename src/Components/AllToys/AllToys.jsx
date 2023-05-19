@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./AllToys.css";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 
 const AllToys = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
   const [showAll, setShowAll] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
+  useTitle("AllToys");
   const DEFAULT_ITEMS_COUNT = 20;
 
   const filteredUsers = users.filter((user) =>

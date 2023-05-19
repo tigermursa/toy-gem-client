@@ -5,10 +5,11 @@ import { FaPenAlt, FaRegTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./ViewDetails.css";
 import Spinner from "../Private/Spiner";
+import useTitle from "../../Hooks/useTitle";
 const ViewDetails = () => {
   const { id } = useParams(); // Access the ID from the route parameters
   const [user, setUser] = useState(null); // Store the selected user data
-
+  useTitle("ViewDetails")
   useEffect(() => {
     // Fetch the data for the specific ID
     fetch(`http://localhost:5000/users/${id}`)
@@ -65,7 +66,7 @@ const ViewDetails = () => {
       </div>
     );
   }
-
+  
   return (
     <div className="container mx-auto">
       <div className="overflow-x-auto">

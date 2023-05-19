@@ -22,7 +22,7 @@ const Footer = () => {
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
                 <a href="#" className="text-sm text-gray-300 hover:text-white">
-                  SITE MAP
+                  Facebook
                 </a>
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
@@ -42,7 +42,7 @@ const Footer = () => {
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
                 <a href="#" className="text-sm text-gray-300 hover:text-white">
-                  TERMS AND CONDITIONS OF USE
+                  Youtube
                 </a>
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
@@ -62,13 +62,12 @@ const Footer = () => {
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
                 <a href="#" className="text-sm text-gray-300 hover:text-white">
-                  WHOLESALE B2B SALES
+                  instagram
                 </a>
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
                 <a href="#" className="text-sm text-gray-300 hover:text-white">
-                  info@toygem.com || Our address: 123 Toy Street, Toy Town,
-                  Dhaka.
+                  info@toygem.com || Our address: 123 Toy Street, Toy Town, Dhaka.
                 </a>
               </li>
             </ul>
