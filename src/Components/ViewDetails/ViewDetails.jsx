@@ -56,7 +56,7 @@ const ViewDetails = () => {
 
   if (!user) {
     return (
-      <div className="mt-72 mb-72 text-4xl text-yellow-400">Loading......</div>
+      <div className="mt-80 mb-80 text-4xl text-yellow-400">Loading......</div>
     );
   }
 
@@ -68,15 +68,23 @@ const ViewDetails = () => {
             <div className="product-text">
               <h1>{user.name}</h1>
               <h2>{user.subCategory}</h2>
-              <p>{user.description}</p>
-              <div className="mt-5 font-sans ">Rating: {user.rating} &#x2B50;&#x2B50;&#x2B50;</div>
-              <div className="mt-5 font-sans text-3xl ">
+              <h6>Seller Name : {user?.sellerName}</h6>
+              <h6 className="mb-3">Seller Email : {user.sellerEmail}</h6>
+              <p> Description : {user.description}</p>
+              <div className="mt-5 font-sans ">
+                Rating: {user.rating} &#x2B50;&#x2B50;&#x2B50;
+              </div>
+              <div className="mt-5 font-sans ">
+                {" "}
+                Available Quantity : {user.quantity}{" "}
+              </div>
+              <div className="mt-5 font-sans text-3xl font-semibold ">
                 Price : ${user.price}
               </div>
             </div>
           </div>
           <div className="product-img md:flex-1">
-            <img src={user.img} className="" alt="Product" />
+            <img className="product-photo" src={user.img} alt="Product" />
           </div>
         </div>
       </div>

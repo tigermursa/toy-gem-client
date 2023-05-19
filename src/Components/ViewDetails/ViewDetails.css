@@ -1,5 +1,5 @@
 .container-details {
-  height: 520px;
+  height: 620px;
   width: 654px;
   margin: 50px auto;
   border-radius: 7px 7px 7px 7px;
@@ -14,10 +14,12 @@
   width: 300px;
   margin-top: 50px;
 }
-
-.product-img img {
-  border-radius: 7px 0 0 7px;
+.product-photo{
+  height: 420px;
+  width: 100%;
+  margin-top: 20px;
 }
+
 
 .product-info {
   float: left;
@@ -67,7 +69,7 @@
 
 @media (max-width: 480px) {
   .container-details {
-    height: 100%;
+    height: 600px;
     width: 100%;
     display: flex;
     justify-content: center;
