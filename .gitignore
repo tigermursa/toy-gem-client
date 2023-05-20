@@ -1,4 +1,11 @@
+.firebase
+
 # Logs
+
+
+
+
+
 logs
 *.log
 npm-debug.log*
@@ -23,4 +30,4 @@ dist-ssr
 *.sln
 *.sw?
 
-.firebase
+
