@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import CreatableSelect from "react-select/creatable";
 import useTitle from "../../Hooks/useTitle";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const options = [
   { value: "Avengers", label: "Avengers" },
@@ -26,12 +27,13 @@ const AddToys = () => {
   const handleSelectChange = (selectedOption) => {
     setSelectedOption(selectedOption);
   };
-  useTitle("AddToy")
+  useTitle("AddToy");
   const [selectedOption2, setSelectedOption2] = useState(null);
   const handleSelectChange2 = (selectedOption2) => {
     setSelectedOption2(selectedOption2);
   };
-
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -113,7 +115,7 @@ const AddToys = () => {
               id="name"
               className="border border-gray-400 p-2 w-full"
               name="name"
-              placeholder="Your food name"
+              placeholder="Toy Name"
               required
             />
           </div>
@@ -131,7 +133,8 @@ const AddToys = () => {
               id="sellerName"
               className="border border-gray-400 p-2 w-full"
               name="sellerName"
-              placeholder="Seller's name"
+              defaultValue={user ? user.displayName : user?.name}
+              readOnly
               required
             />
           </div>
@@ -147,7 +150,8 @@ const AddToys = () => {
               id="sellerEmail"
               className="border border-gray-400 p-2 w-full"
               name="sellerEmail"
-              placeholder="Seller's email"
+              defaultValue={user?.email}
+              readOnly
               required
             />
           </div>

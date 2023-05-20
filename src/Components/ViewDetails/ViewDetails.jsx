@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import "./ViewDetails.css";
 import Spinner from "../Private/Spiner";
 import useTitle from "../../Hooks/useTitle";
+
 const ViewDetails = () => {
   const { id } = useParams(); // Access the ID from the route parameters
   const [user, setUser] = useState(null); // Store the selected user data
-  useTitle("ViewDetails")
+  useTitle("ViewDetails");
+
   useEffect(() => {
     // Fetch the data for the specific ID
     fetch(`http://localhost:5000/users/${id}`)
@@ -21,7 +23,9 @@ const ViewDetails = () => {
         console.log(error);
       });
   }, [id]);
+
   const navigate = useNavigate();
+
   const handleDelete = () => {
     if (!user) return;
 
@@ -66,7 +70,7 @@ const ViewDetails = () => {
       </div>
     );
   }
-  
+
   return (
     <div className="container mx-auto">
       <div className="overflow-x-auto">
@@ -75,18 +79,17 @@ const ViewDetails = () => {
             <div className="product-text">
               <h1>{user.name}</h1>
               <h2>{user.subCategory}</h2>
-              <h6>Seller Name : {user?.sellerName}</h6>
-              <h6 className="mb-3">Seller Email : {user.sellerEmail}</h6>
-              <p> Description : {user.description}</p>
+              <h6>Seller Name: {user?.sellerName}</h6>
+              <h6 className="mb-3">Seller Email: {user.sellerEmail}</h6>
+              <p>Description: {user.description}</p>
               <div className="mt-5 font-sans ">
                 Rating: {user.rating} &#x2B50;&#x2B50;&#x2B50;
               </div>
               <div className="mt-5 font-sans ">
-                {" "}
-                Available Quantity : {user.quantity}{" "}
+                Available Quantity: {user.quantity}
               </div>
               <div className="mt-5 font-sans text-3xl font-semibold ">
-                Price : ${user.price}
+                Price: ${user.price}
               </div>
             </div>
           </div>
@@ -96,11 +99,12 @@ const ViewDetails = () => {
         </div>
       </div>
       <div className="text-center mb-5">
-        <Link to="/">
-          <button className="bg-blue-950 text-white py-2 px-4 rounded mt-6">
-            Home
-          </button>
-        </Link>
+        <button
+          className="bg-blue-950 text-white py-2 px-4 rounded mt-6"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
       </div>
     </div>
   );
