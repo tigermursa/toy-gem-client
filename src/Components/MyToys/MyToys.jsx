@@ -12,7 +12,7 @@ const MyToys = () => {
   const [sortByPrice, setSortByPrice] = useState(null);
 
   useEffect(() => {
-    fetch(`https://server-toygem-tigermursa.vercel.app/toys/${user?.email}`)
+    fetch(`https://server-toygem-tigermursa.vercel.app/mytoys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [user]);
