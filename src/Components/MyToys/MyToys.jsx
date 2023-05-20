@@ -12,9 +12,19 @@ const MyToys = () => {
   const [sortByPrice, setSortByPrice] = useState(null);
 
   useEffect(() => {
-    fetch(`https://server-toygem-tigermursa.vercel.app/mytoys/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    const fetchUserToys = async () => {
+      try {
+        const response = await fetch(`https://server-toygem-tigermursa.vercel.app/toys/email/${user?.email}`);
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching user toys:", error);
+      }
+    };
+
+    if (user) {
+      fetchUserToys();
+    }
   }, [user]);
 
   const handleDelete = (_id) => {
@@ -28,7 +38,9 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://server-toygem-tigermursa.vercel.app/toys/${_id}`, { method: "DELETE" })
+        fetch(`https://server-toygem-tigermursa.vercel.app/toys/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -56,54 +68,37 @@ const MyToys = () => {
   return (
     <div className="container mx-auto">
       <div className="overflow-x-auto">
-        <table className="w-full border border-gray-300 mt-5 ">
+        <table className="w-full border border-gray-300 mt-5">
+          {/* Table header */}
           <thead>
             <tr>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">
-                Image
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">
-                Seller
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">
-                Toy Name
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">
-                Sub-category
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">
-                Price
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">
-                Available Quantity
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r ">
-                View Details
-              </th>
-              <th className="px-4 py-3 text-center text-sm font-medium border-b ">
-                Delete
-              </th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Image</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Seller</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Toy Name</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Sub-category</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Price</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Available Quantity</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Description</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b border-r">Update</th>
+              <th className="px-4 py-3 text-center text-sm font-medium border-b">Delete</th>
             </tr>
           </thead>
+          {/* Table body */}
           <tbody>
             {users.map((user) => (
               <tr key={user._id}>
                 <td className="px-4 py-3 border-b border-r">
-                  <img
-                    className="w-12 h-12 mx-auto rounded-md"
-                    src={user.img}
-                    alt=""
-                  />
+                  <img className="w-12 h-12 mx-auto rounded-md" src={user.img} alt="" />
                 </td>
-                <td className="px-4 py-3 border-b border-r">
-                  {user.sellerName}
-                </td>
+                <td className="px-4 py-3 border-b border-r">{user.sellerName}</td>
                 <td className="px-4 py-3 border-b border-r">{user.name}</td>
-                <td className="px-4 py-3 border-b border-r">
-                  {user.subCategory}
-                </td>
+                <td className="px-4 py-3 border-b border-r">{user.subCategory}</td>
                 <td className="px-4 py-3 border-b border-r">{user.price}</td>
                 <td className="px-4 py-3 border-b border-r">{user.quantity}</td>
+                <td className="px-4 py-3 border-b border-r">
+                  {user.description.split(" ").slice(0, 5).join(" ")}
+                  {user.description.split(" ").length > 5 && "...."}
+                </td>
                 <td className="px-6 py-4 border-b border-r">
                   <div>
                     <Link to={`/update/${user._id}`}>
@@ -127,16 +122,13 @@ const MyToys = () => {
       </div>
       <div className="text-center mb-96">
         <Link to="/addtoys">
-          <button className="bg-blue-950 text-white py-2 px-4 rounded mt-6">
-            Add a Toy
-          </button>
+          <button className="bg-blue-950 text-white py-2 px-4 rounded mt-6">Add a Toy</button>
         </Link>
         <button
-          className=" bg-blue-950 text-white py-2 px-4 rounded ml-2 focus:outline-none"
+          className="bg-blue-950 text-white py-2 px-4 rounded ml-2 focus:outline-none"
           onClick={handleSortByPrice}
         >
-          Sort by price
-          {sortByPrice === "asc" ? "▲" : "▼"}
+          Sort by price {sortByPrice === "asc" ? "▲" : "▼"}
         </button>
       </div>
     </div>

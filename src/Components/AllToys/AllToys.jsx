@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./AllToys.css";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 import useTitle from "../../Hooks/useTitle";
 
 const AllToys = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
-  const [showAll, setShowAll] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteMode, setDeleteMode] = useState(false);
-  const [itemsCount, setItemsCount] = useState(20); // Number of items to display initially
-  useTitle("AllToys");
-
+  const { user } = useContext(AuthContext); // Access user
+  useTitle("AddToy");
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -22,6 +21,11 @@ const AllToys = () => {
   };
 
   const handleDelete = (_id) => {
+    if (!user) {
+      Swal.fire("Please login to perform this action");
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -32,7 +36,9 @@ const AllToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://server-toygem-tigermursa.vercel.app/toys/${_id}`, { method: "DELETE" })
+        fetch(`https://server-toygem-tigermursa.vercel.app/toys/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -45,9 +51,18 @@ const AllToys = () => {
     });
   };
 
-  const handleSeeAll = () => {
-    setShowAll(!showAll);
-    setItemsCount(showAll ? 20 : filteredUsers.length);
+  const handleDeleteModeToggle = () => {
+    if (!user) {
+      Swal.fire("Please login to perform this action");
+      return;
+    }
+
+    setDeleteMode(!deleteMode);
+    Swal.fire(
+      deleteMode
+        ? "Delete mode is off now! You can't delete!"
+        : "Delete mode is on now! You can delete!"
+    );
   };
 
   return (
@@ -103,7 +118,7 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.slice(0, itemsCount).map((user) => (
+            {filteredUsers.map((user) => (
               <tr key={user._id}>
                 <td className="px-4 py-3 border-b border-r">
                   <img
@@ -132,7 +147,7 @@ const AllToys = () => {
                 </td>
                 <td className="px-4 py-3 border-b">
                   <div className="flex justify-center">
-                    {deleteMode && (
+                    {deleteMode && user && (
                       <button
                         onClick={() => handleDelete(user._id)}
                         className="text-white font-bold bg-red-600 p-2 md:p-3 hover:bg-red-800 rounded-full"
@@ -152,29 +167,17 @@ const AllToys = () => {
           className={`bg-blue-950 text-white py-2 px-4 rounded mr-2 ${
             deleteMode ? "hidden" : "block"
           }`}
-          onClick={() => {
-            setDeleteMode(true);
-            Swal.fire("Delete mode is on now! You can delete! ");
-          }}
+          onClick={handleDeleteModeToggle}
         >
-          Delete Mode On
+          {user ? "Delete Mode On" : "Login to Enable Delete Mode"}
         </button>
         <button
           className={`bg-blue-950 text-white py-2 px-4 rounded mr-2 ${
             deleteMode ? "block" : "hidden"
           }`}
-          onClick={() => {
-            setDeleteMode(false);
-            Swal.fire("Delete mode is off now! You can't delete! ");
-          }}
+          onClick={handleDeleteModeToggle}
         >
-          Delete Mode Off
-        </button>
-        <button
-          className="bg-blue-950 text-white py-2 px-4 rounded mr-2"
-          onClick={handleSeeAll}
-        >
-          {showAll ? "Show Less" : "See All"}
+          {user ? "Delete Mode Off" : "Login to Disable Delete Mode"}
         </button>
         <Link to="/addtoys">
           <button className="bg-blue-950 text-white py-2 px-4 rounded hidden">
