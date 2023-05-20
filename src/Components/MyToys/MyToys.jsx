@@ -12,7 +12,7 @@ const MyToys = () => {
   const [sortByPrice, setSortByPrice] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mytoys/${user?.email}`)
+    fetch(`https://server-toygem-tigermursa.vercel.app/toys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [user]);
@@ -28,7 +28,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${_id}`, { method: "DELETE" })
+        fetch(`https://server-toygem-tigermursa.vercel.app/toys/${_id}`, { method: "DELETE" })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -131,7 +131,11 @@ const MyToys = () => {
             Add a Toy
           </button>
         </Link>
-        <button className=" bg-blue-950 text-white py-2 px-4 rounded ml-2 focus:outline-none" onClick={handleSortByPrice}>Sort by price 
+        <button
+          className=" bg-blue-950 text-white py-2 px-4 rounded ml-2 focus:outline-none"
+          onClick={handleSortByPrice}
+        >
+          Sort by price
           {sortByPrice === "asc" ? "▲" : "▼"}
         </button>
       </div>

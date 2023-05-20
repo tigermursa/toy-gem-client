@@ -43,7 +43,7 @@ const Update = () => {
 
     form.reset();
 
-    fetch(`http://localhost:5000/users/${theLoadedUsers._id}`, {
+    fetch(`https://server-toygem-tigermursa.vercel.app/toys/${theLoadedUsers._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ const Update = () => {
         }
       });
   };
-  useTitle("Update")
+  useTitle("Update");
   return (
     <div className="p-4">
       <h1 className="font-serif font-semibold text-3xl mt-5 mb-5">

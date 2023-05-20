@@ -14,7 +14,7 @@ const ViewDetails = () => {
 
   useEffect(() => {
     // Fetch the data for the specific ID
-    fetch(`http://localhost:5000/users/${id}`)
+    fetch(`https://server-toygem-tigermursa.vercel.app/toys/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data); // Update the state with the fetched user data
@@ -39,7 +39,7 @@ const ViewDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${id}`, { method: "DELETE" })
+        fetch(`https://server-toygem-tigermursa.vercel.app/toys/${id}`, { method: "DELETE" })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

@@ -61,7 +61,7 @@ const AddToys = () => {
     form.reset();
     setSelectedOption(null);
     setSelectedOption2(null);
-    fetch("http://localhost:5000/users", {
+    fetch("https://server-toygem-tigermursa.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

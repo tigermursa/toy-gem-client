@@ -25,12 +25,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch(`http://localhost:5000/users`),
+        loader: () => fetch(`https://server-toygem-tigermursa.vercel.app/toys`),
       },
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch(`http://localhost:5000/users`),
+        loader: () => fetch(`https://server-toygem-tigermursa.vercel.app/toys/`),
       },
       {
         path: "/mytoys",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/users/${params.id}`),
+          fetch(`https://server-toygem-tigermursa.vercel.app/toys/${params.id}`),
       },
       {
         path: "/addtoys",
