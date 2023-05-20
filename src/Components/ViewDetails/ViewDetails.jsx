@@ -101,7 +101,7 @@ const ViewDetails = () => {
       <div className="text-center mb-5">
         <button
           className="bg-blue-950 text-white py-2 px-4 rounded mt-6"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/")}
         >
           Back
         </button>

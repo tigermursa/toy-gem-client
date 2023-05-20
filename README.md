@@ -46,5 +46,6 @@ Deploying the Server
 
 ----------6. The Search bar is really new and amazing to create for me this time ,now i know how to use index.
 
-------7.My live site link >>>>>>>>
-https://food-monkey-83577.web.app/
+------7.My live site link >>>>>>>> 
+What a cool link I have got ! no number in it!
+https://toy-gem.web.app

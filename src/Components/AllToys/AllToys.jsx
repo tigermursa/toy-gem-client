@@ -1,17 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./AllToys.css";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Provider/AuthProvider";
 import useTitle from "../../Hooks/useTitle";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AllToys = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteMode, setDeleteMode] = useState(false);
-  const { user } = useContext(AuthContext); // Access user
-  useTitle("AddToy");
+  useTitle("AllToys");
+  const { user } = useContext(AuthContext);
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -22,7 +22,10 @@ const AllToys = () => {
 
   const handleDelete = (_id) => {
     if (!user) {
-      Swal.fire("Please login to perform this action");
+      Swal.fire({
+        icon: "warning",
+        title: "Please login to perform this action",
+      });
       return;
     }
 
@@ -53,16 +56,26 @@ const AllToys = () => {
 
   const handleDeleteModeToggle = () => {
     if (!user) {
-      Swal.fire("Please login to perform this action");
+      Swal.fire({
+        icon: "warning",
+        title: "Please login to perform this action",
+        showCancelButton: true,
+        confirmButtonText: "Go to Login",
+        cancelButtonText: "Not now",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Replace the line below with the navigation logic to /login
+          window.location.href = "/login";
+        }
+      });
       return;
     }
-
     setDeleteMode(!deleteMode);
-    Swal.fire(
-      deleteMode
-        ? "Delete mode is off now! You can't delete!"
-        : "Delete mode is on now! You can delete!"
-    );
+    Swal.fire({
+      title: deleteMode ? "Delete mode is off now!" : "Delete mode is on now!",
+      text: deleteMode ? "You can't delete!" : "You can delete!",
+      icon: deleteMode ? "error" : "success",
+    });
   };
 
   return (
