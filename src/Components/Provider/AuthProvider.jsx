@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   // ===================================================================================================================================================================+
-  // This code is very very important for image uploading  and set userName
+  // This code is for image uploading  and set userName
   // =================================================================================================================================================================+
   const auth = getAuth(app);
   const createUser = (email, password, username, photoURL) => {
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
       });
   };
   // ===================================================================================================================================================================+
-  //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ This code is very very important for image uploading  and set userName ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ This code is for image uploading  and set userName ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   // =================================================================================================================================================================+
   const signIn = (email, password) => {
     setLoading(true);

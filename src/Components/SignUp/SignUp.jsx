@@ -25,7 +25,7 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState(null);
 
-  // THE MAIN FUNCTION OF SUBMIT FORM >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>,,,
+  // THE MAIN FUNCTION OF SUBMIT FORM .......................................................
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -47,7 +47,7 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
-    // PHOTO UPLOADING THINGS HERE BE CAREFUL >>>>>>>>>>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!>>>!!!!!!!!!!
+    // PHOTO UPLOADING THINGS HERE BE CAREFUL ........................
     setLoading(true);
     try {
       const url = await uploadImageToStorage();

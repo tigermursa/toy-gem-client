@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,6 +11,8 @@ import { FaRegStar, FaShoppingCart } from "react-icons/fa";
 import useTitle from "../../Hooks/useTitle";
 import Partners from "./HomeSections/Partners";
 import DiscountSection from "./HomeSections/DiscountSection";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const HomeSlider = () => {
   const settings = {
     dots: true,
@@ -58,11 +60,19 @@ const HomeSlider = () => {
 const Home = () => {
   const [activeTab, setActiveTab] = useState(0);
   useTitle("Home");
+
   const handleTabSelect = (index) => {
     setActiveTab(index);
+    AOS.refresh();
   };
   const toys = useLoaderData();
   console.log(toys);
+
+  // AOS
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <div className="slider-container">
@@ -79,7 +89,7 @@ const Home = () => {
           <Tab>Transformers</Tab>
           <Tab>Justice League</Tab>
         </TabList>
-        <TabPanel>
+        <TabPanel forceRender={true}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {toys
               .filter((toy) => toy.subCategory === "Avengers")
@@ -127,7 +137,7 @@ const Home = () => {
               ))}
           </div>
         </TabPanel>
-        <TabPanel>
+        <TabPanel forceRender={true}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {toys
               .filter((toy) => toy.subCategory === "Transformer")
@@ -175,7 +185,7 @@ const Home = () => {
               ))}
           </div>
         </TabPanel>
-        <TabPanel>
+        <TabPanel forceRender={true}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {toys
               .filter((toy) => toy.subCategory === "Justice League")
@@ -224,8 +234,13 @@ const Home = () => {
           </div>
         </TabPanel>
       </Tabs>
-      <DiscountSection></DiscountSection>
-      <Partners></Partners>
+      <div data-aos="fade-up">
+        <DiscountSection></DiscountSection>
+      </div>
+
+      <div data-aos="fade-up">
+        <Partners></Partners>
+      </div>
     </>
   );
 };
