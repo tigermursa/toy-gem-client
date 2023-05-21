@@ -30,21 +30,32 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch(`https://server-toygem-tigermursa.vercel.app/toys/`),
+        loader: () =>
+          fetch(`https://server-toygem-tigermursa.vercel.app/toys/`),
       },
       {
         path: "/mytoys",
-        element: <MyToys></MyToys>,
+        element: (
+          <PrivateRoute>
+            <MyToys></MyToys>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(`https://server-toygem-tigermursa.vercel.app/toys/${params.id}`),
+          fetch(
+            `https://server-toygem-tigermursa.vercel.app/toys/${params.id}`
+          ),
       },
       {
         path: "/addtoys",
-        element: <AddToys></AddToys>,
+        element: (
+          <PrivateRoute>
+            <AddToys></AddToys>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blogs",
