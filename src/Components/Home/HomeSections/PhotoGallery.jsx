@@ -9,7 +9,7 @@ const PhotoGallery = () => {
     },
     {
       id: 2,
-      src: "https://nerdreactor.com/wp-content/uploads/2015/02/superhero-action-figure-toys-photography-hrjoe-1.jpg",
+      src: "https://geekositymag.com/wp-content/uploads/2021/12/Christmas-Top-10-1024x532.jpg",
       alt: "Image 5",
     },
     {

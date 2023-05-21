@@ -37,7 +37,7 @@ const Footer = () => {
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
                 <a href="#" className="text-sm text-gray-300 hover:text-white">
-                  PRIVACY POLICY
+                OUR PAYMENT METHOD:
                 </a>
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">
                 <a href="#" className="text-sm text-gray-300 hover:text-white">
-                  RESPONSIBLE DISCLOSURE POLICY
+                 <img className="m-auto" src="https://i0.wp.com/leowebbd.com/wp-content/uploads/2020/08/payments-bd.png?resize=183%2C22&ssl=1" alt="" />
                 </a>
               </li>
               <li className="w-1/2 md:w-1/4 mb-2">

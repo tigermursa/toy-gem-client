@@ -9,6 +9,8 @@ import "react-tabs/style/react-tabs.css";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaRegStar, FaShoppingCart } from "react-icons/fa";
 import useTitle from "../../Hooks/useTitle";
+import Partners from "./HomeSections/Partners";
+import DiscountSection from "./HomeSections/DiscountSection";
 const HomeSlider = () => {
   const settings = {
     dots: true,
@@ -40,25 +42,13 @@ const HomeSlider = () => {
     <div className="slider-container">
       <Slider {...settings}>
         <div className="slider-slide">
-          <img
-            src="/sliderphoto1.jpg"
-            alt="Slide 1"
-            className="slider-image"
-          />
+          <img src="/sliderphoto1.jpg" alt="Slide 1" className="slider-image" />
         </div>
         <div className="slider-slide">
-          <img
-            src="/slider2r.jpg"
-            alt="Slide 2"
-            className="slider-image"
-          />
+          <img src="/slider2r.jpg" alt="Slide 2" className="slider-image" />
         </div>
         <div className="slider-slide">
-          <img
-            src="/slider3.jpg"
-            alt="Slide 3"
-            className="slider-image"
-          />
+          <img src="/slider3.jpg" alt="Slide 3" className="slider-image" />
         </div>
       </Slider>
     </div>
@@ -67,7 +57,7 @@ const HomeSlider = () => {
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState(0);
-  useTitle("Home")
+  useTitle("Home");
   const handleTabSelect = (index) => {
     setActiveTab(index);
   };
@@ -234,6 +224,8 @@ const Home = () => {
           </div>
         </TabPanel>
       </Tabs>
+      <DiscountSection></DiscountSection>
+      <Partners></Partners>
     </>
   );
 };
