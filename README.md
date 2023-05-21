@@ -1,4 +1,4 @@
-Dear sir some of the buttons are hidden for assignment requirements ,
+
 
 ----1.Installation
 follow these steps:

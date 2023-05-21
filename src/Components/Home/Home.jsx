@@ -80,9 +80,11 @@ const Home = () => {
           <HomeSlider />
         </div>
       </div>
+      <p className="text-2xl lg:text-6xl font-semibold text-blue-950 mb-5">Photos From Our Customers</p>
       <div className="photo-gallery-container mb-5">
         <PhotoGallery />
       </div>
+      <p className="text-2xl lg:text-5xl font-semibold text-blue-950 mb-10">Available 3 Category</p>
       <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
         <TabList>
           <Tab>Avengers</Tab>
